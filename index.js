@@ -12,18 +12,20 @@ const port = process.env.PORT || 5002;
 const env = {
   BOT_NUMBER: process.env.BOT_NUMBER,
   CLIENT_NUMBER: process.env.CLIENT_NUMBER,
+  BASIC_PASS: process.env.BASIC_PASS,
 };
 
 app.use(express.json());
 app.use(cors());
 app.use(
   basicAuth({
-    users: { bawazier: "murphy" },
+    users: { bot: env.BASIC_PASS },
   })
 );
 
 const client = new Client({
   puppeteer: {
+    executablePath: "/usr/bin/chromium-browser",
     headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   },
