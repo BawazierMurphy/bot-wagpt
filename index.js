@@ -25,7 +25,6 @@ app.use(
 
 const client = new Client({
   puppeteer: {
-    executablePath: "/usr/bin/chromium-browser",
     headless: true,
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   },
